@@ -4,19 +4,19 @@ class Solution:
     def isValid(self, s: str) -> bool:
         s = list(s)
         stack = []
-        for i in s:
-            if i == '(' or i == '[' or i == '{':
-                stack.append(i)
+        for char in s:
+            if char == "(" or char == "[" or char == "{":
+                stack.append(char)
             else:
-                if len(stack) == 0:
-                    return False
-                if i == ')' and stack[-1] == '(':
+                if len(stack) == 0: return False
+                if char == ")" and stack[-1] == "(":
                     stack.pop()
-                elif i == ']' and stack[-1] == '[':
+                elif char == "]" and stack[-1] == "[":
                     stack.pop()
-                elif i == '}' and stack[-1] == '{':
+                elif char == "}" and stack[-1] == "{":
                     stack.pop()
                 else:
-                    return False
+                    stack.append(char)
         return len(stack) == 0
+
 
